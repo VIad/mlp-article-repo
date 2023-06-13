@@ -419,13 +419,13 @@ And it can be done in less than 100 lines of code **
   
 
 ```python
-class  NN:
-	def  __init__(self, layers, loss='mse', optimizer=SGD()):
-		self.loss = loss
-		self.layers = layers
-		self.optimizer = optimizer
-		for layer in layers:
-			layer.optimizer = copy.copy(optimizer)
+class NN:
+   def __init__(self, layers, loss='mse', optimizer=SGD()):
+	self.loss = loss
+	self.layers = layers
+	self.optimizer = optimizer
+	for layer in layers:
+	    layer.optimizer = copy.copy(optimizer)
 ```
 
   
@@ -510,15 +510,15 @@ Lets start defining the class
 
 ```python
 
-class  Layer:
-	def  __init__(self, input_size, output_size, activation, kernel_initializer=None):
-		self.kernel_initializer = kernel_initializer
-		self.optimizer = None
-		if kernel_initializer is  None:
-			self.kernel_initializer = XavierInitializer(input_size, output_size)
-		self.activation = activation
-		self.W = self.kernel_initializer.W()
-		self.B = self.kernel_initializer.B()
+class Layer:
+    def  __init__(self, input_size, output_size, activation, kernel_initializer=None):
+	self.kernel_initializer = kernel_initializer
+	self.optimizer = None
+	if kernel_initializer is  None:
+	    self.kernel_initializer = XavierInitializer(input_size, output_size)
+	self.activation = activation
+	self.W = self.kernel_initializer.W()
+	self.B = self.kernel_initializer.B()
 
 ```
 
@@ -641,12 +641,11 @@ The entire prediction process of the neural network is then as simple as:
 **(NN class)**
 
 ```python
-def  predict(self, X):
-	output = X
-	for layer in  self.layers:
-		output = layer.layer(output)
-	return output
-
+def predict(self, X):
+     output = X
+     for layer in  self.layers:
+         output = layer.layer(output)
+     return output
 ```
 
 If we wanted to define the example from **[fig 3]** in code with what we already have, it would look like this:
