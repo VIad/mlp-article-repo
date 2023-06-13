@@ -40,7 +40,7 @@ The scope of this article is to analyze the implementation of the [Multilayer Pe
 
 An [Artificial Neuron](https://en.wikipedia.org/wiki/Artificial_neuron) is a mathematical function or a composition of multiple functions. During inference, every neuron recieves an input signal. The inputs to that neuron are then weighted with by a linear coefficient and afterwards (usually) an activation function is applied.<sub>**fig 1**</sub>
 
-![A neuron without an activation function](images\2eZGU4b.jpeg)
+![A neuron without an activation function](https://raw.githubusercontent.com/VIad/mlp-article-repo/main/images/2eZGU4b.jpeg)
 *[fig 1]*
 
   
@@ -49,7 +49,7 @@ The *input signal* is usually a number or a list of numbers, grouped in a vector
 
   
 
-![enter image description here](images\neutral-network-diagram.png)
+![enter image description here](https://raw.githubusercontent.com/VIad/mlp-article-repo/main/images/neutral-network-diagram.png)
 *[fig 2]*
 
   
@@ -121,7 +121,7 @@ Why would we need a complex algorithm for our task when we can deduce that F(x) 
 
 Suppose this task however
 
-![enter image description here](images\uNKfSAG.jpg)
+![enter image description here](https://raw.githubusercontent.com/VIad/mlp-article-repo/main/images/uNKfSAG.jpg)
 
 In this example, our X is now an image and our task is to determine whether or not the image is of a cat or not. How would we even begin to approach this task algebraically ?
 
@@ -182,7 +182,7 @@ Here is an example of what the records look like:
 
 | Table | Plot |
 |--|--|
-| ![enter image description here](images\c4z8yE0.jpg) | ![enter image description here](images\2D17seE.jpg) |
+| ![enter image description here](https://raw.githubusercontent.com/VIad/mlp-article-repo/main/images/c4z8yE0.jpg) | ![enter image description here](https://raw.githubusercontent.com/VIad/mlp-article-repo/main/images/2D17seE.jpg) |
 
   
 
@@ -225,7 +225,7 @@ This is very good, because if we find the parameters **w** and **b**, for which 
 
 If we plot the cost function with respect to some random values generated for **w** and **b** we can see graphically that there is indeed a place (**or a direction**), towards which our L function tends to decrease in value
 
-![enter image description here](images\bedrbu1.jpg)
+![enter image description here](https://raw.githubusercontent.com/VIad/mlp-article-repo/main/images/bedrbu1.jpg)
 
 So how do we find the direction in which our L function will decrease in value ?
 
@@ -235,7 +235,7 @@ We can find the function's [gradient](https://en.wikipedia.org/wiki/Gradient) at
 
 To do that, let's first analyze how the loss value is computed.
 
-![enter image description here](images\F3pPh10.jpg)
+![enter image description here](https://raw.githubusercontent.com/VIad/mlp-article-repo/main/images/F3pPh10.jpg)
 
   
 
@@ -310,7 +310,7 @@ We can then 'fit' our set of input features to the set of output values and ((( 
   
   
 
-![enter image description here](images\7dds9hf.gif)
+![enter image description here](https://raw.githubusercontent.com/VIad/mlp-article-repo/main/images/7dds9hf.gif)
 
 <sub>[Fig 4]</sub>
 
@@ -430,7 +430,7 @@ $$ activation = G(wx + b) $$
 
   
 
-![enter image description here](images\sMe17VR.jpg)
+![enter image description here](https://raw.githubusercontent.com/VIad/mlp-article-repo/main/images/sMe17VR.jpg)
 
 *[fig 3]*
 
@@ -633,7 +633,7 @@ Its now time to get to the fun stuff.
 
 ### Training the neural network
 
-![enter image description here](images\p7m8742.jpg)
+![enter image description here](https://raw.githubusercontent.com/VIad/mlp-article-repo/main/images/p7m8742.jpg)
 
   
 
@@ -708,7 +708,7 @@ Entropy is a way to measure uncertainty in a given distribution.
 
   
 
-![enter image description here](images\uWXFQWD.jpg)
+![enter image description here](https://raw.githubusercontent.com/VIad/mlp-article-repo/main/images/uWXFQWD.jpg)
 
   
 
@@ -809,7 +809,7 @@ Our input layer consists of 7 neurons because of the size of our data
 
 $$  \vec x = \begin{bmatrix} x_1\text{(Age)} \\ x_2\text{(Sex)} \\ \vdots \\ x_7\text{(embarked)}\end{bmatrix} $$
 
-![enter image description here](images\6161YJv.jpg)
+![enter image description here](https://raw.githubusercontent.com/VIad/mlp-article-repo/main/images/6161YJv.jpg)
 
 <sub>(the visualisation was produced using [NN-SVG](http://alexlenail.me/NN-SVG/index.html))</sub>
 
@@ -845,7 +845,7 @@ net.fit(X_train, Y_train, epochs=1000, learning_rate=0.001, sample_size=150)
 
 ## Boom, that's it, thanks for reading
 
-![enter image description here](images\ezgif.com-video-to-gif0a780b1f48281f55.gif)
+![enter image description here](https://raw.githubusercontent.com/VIad/mlp-article-repo/main/images/ezgif.com-video-to-gif0a780b1f48281f55.gif)
 
   
 
@@ -872,7 +872,7 @@ To perform backpropagation and minimize our cost function, we first have to see 
   
   
 
-![enter image description here](images\BxGFGfY.png)
+![enter image description here](https://raw.githubusercontent.com/VIad/mlp-article-repo/main/images/BxGFGfY.png)
 
 This is how the value of X gets transformed throughout the layers. Our goal is, as in the linear regression example, to optimize our **W** and **B** values. However, this time it's a bit more tricky, because our computation chain is longer.
 
@@ -1090,7 +1090,7 @@ Plain SGD however takes more steps to converge, due to the fact that we're doing
 
   
 
-![enter image description here](images\HdaRp81.jpg)
+![enter image description here](https://raw.githubusercontent.com/VIad/mlp-article-repo/main/images/HdaRp81.jpg)
 
 <sub>[source: baeldung](https://www.baeldung.com/cs/mini-batch-vs-single-batch-training-data)</sub>
 
@@ -1113,7 +1113,7 @@ Let's see it in action with the titanic dataset.
 
 Running the Neural network example from above for 20 experiments, we get these results:
 
-![enter image description here](images\qznJaW3.png)
+![enter image description here](https://raw.githubusercontent.com/VIad/mlp-article-repo/main/images/qznJaW3.png)
 
 <br>
 We use the first 600 records to train the algorithm and the rest 281 to measure the performance.
@@ -1199,7 +1199,7 @@ net = NN(layers=[
 net.fit(X_train, Y_train, epochs=1000, learning_rate=0.02, sample_size=100, include_logs=False)
 ```
 
-![enter image description here](images\ER0aayS.png)
+![enter image description here](https://raw.githubusercontent.com/VIad/mlp-article-repo/main/images/ER0aayS.png)
 
 Applying our new optimizer, we can get much better results
 
@@ -1458,11 +1458,11 @@ Other improvements that can (and probably should) be made are:
 
 ### Test MNIST, Tensorflow vs Our V2
 
-![enter image description here](images\OyuUWW5.png)
+![enter image description here](https://raw.githubusercontent.com/VIad/mlp-article-repo/main/images/OyuUWW5.png)
 
 ### Test TITANIC, Tensorflow vs Our V1
 
-![enter image description here](images\4RB34Wh.png)
+![enter image description here](https://raw.githubusercontent.com/VIad/mlp-article-repo/main/images/4RB34Wh.png)
 
 Expecting to outperform tensorflow would be naive, but we gave it a good try :)
 
