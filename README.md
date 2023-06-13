@@ -40,7 +40,7 @@ The scope of this article is to analyze the implementation of the [Multilayer Pe
 
 An [Artificial Neuron](https://en.wikipedia.org/wiki/Artificial_neuron) is a mathematical function or a composition of multiple functions. During inference, every neuron recieves an input signal. The inputs to that neuron are then weighted with by a linear coefficient and afterwards (usually) an activation function is applied.<sub>**fig 1**</sub>
 
-![A neuron without an activation function](https://i.imgur.com/2eZGU4b.jpg)
+![A neuron without an activation function]("images\2eZGU4b.jpeg")
 *[fig 1]*
 
   
