@@ -205,7 +205,10 @@ Note that the names w and b are not random and are named after **weight** and **
   
   
 
-We can initially randomly set **w** and **b** and run inference with each of our samples and store our predictions in a variable $$  \hat{Y} $$
+We can initially randomly set **w** and **b** and run inference with each of our samples and store our predictions in a variable
+```math 
+\hat{Y} 
+```
 
 The next step is to find out **how far off we are** from the actual 
 
