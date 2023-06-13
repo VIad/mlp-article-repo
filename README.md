@@ -129,12 +129,16 @@ In this example, our X is now an image and our task is to determine whether or n
 
 Here, lets try it. Suppose **I** is our grayscale matrix representation of the image
 
-  
+```math 
+I = \begin{bmatrix}94 & 76 & ... & 165 & 227 \\42 & 84 & ...& 11 & 171 \\\vdots & \vdots& \vdots& \vdots&\vdots \\71 & 237 & ...& 161 & 80 \\100 & 61 & ...& 225 & 5\end{bmatrix}
+```
 
 
-$$I = \begin{bmatrix}94 & 76 & ... & 165 & 227 \\42 & 84 & ...& 11 & 171 \\\vdots & \vdots& \vdots& \vdots&\vdots \\71 & 237 & ...& 161 & 80 \\100 & 61 & ...& 225 & 5\end{bmatrix}$$
 
-Then we can just simply find if $$ I_{250, 250}= 0  $$
+Then we can just simply find if 
+```math
+I_{250, 250}= 0
+```
 
 Or if the pixel value for the center pixel is equal to 0 (**black**) because dogs have black noses. This turned out simpler than we thought, trivial even😎. Now we just need to flip the result and we have a cat classifier. Oh wait..
 
@@ -203,7 +207,11 @@ Note that the names w and b are not random and are named after **weight** and **
 
 We can initially randomly set **w** and **b** and run inference with each of our samples and store our predictions in a variable $$  \hat{Y} $$
 
-The next step is to find out **how far off we are** from the actual $$ Y $$
+The next step is to find out **how far off we are** from the actual 
+
+```math
+Y
+```
 
 There's many ways to do that, but we'll measure it using the [mean squared error](https://en.wikipedia.org/wiki/Mean_squared_error)
 
@@ -266,18 +274,21 @@ So:
   
 
 
-$$\nabla f(p) =\begin{bmatrix}\frac{\partial f}{\partial x_1} \\ \vdots \\ \frac{\partial f}{\partial x_n} \end{bmatrix}$$
+```math
+\nabla f(p) =\begin{bmatrix}\frac{\partial f}{\partial x_1} \\ \vdots \\ \frac{\partial f}{\partial x_n} \end{bmatrix}
+```
 
 Following that we can get :
-
-$$\nabla L(w, b) =\begin{bmatrix}\frac{\partial L}{\partial w} \\ \frac{\partial L}{\partial b} \end{bmatrix}$$
-
+```math
+\nabla L(w, b) =\begin{bmatrix}\frac{\partial L}{\partial w} \\ \frac{\partial L}{\partial b} \end{bmatrix}
+```
 Which is a gradient vector with 2 components. Expanding on those components we get that:
-
-$$  \frac{\partial L(w,b)}{\partial w} = \frac{2}{n} \sum_{i=1}^{n} (x_i w + b - y_i) x_i $$
-
-$$  \frac{\partial L(w,b)}{\partial b} = \frac{2}{n} \sum_{i=1}^{n} (x_i w + b - y_i) $$
-
+```math
+\frac{\partial L(w,b)}{\partial w} = \frac{2}{n} \sum_{i=1}^{n} (x_i w + b - y_i) x_i
+```
+```math
+\frac{\partial L(w,b)}{\partial b} = \frac{2}{n} \sum_{i=1}^{n} (x_i w + b - y_i)
+```
   
 
 This is all the math we're going to need to implement linear regression :).
@@ -285,7 +296,18 @@ This is all the math we're going to need to implement linear regression :).
 If we had to put all this into an algorithm, it would look like this
 
 
-$$  \text{Repeat N times \{} \newline  \newline w := w-\alpha\frac{\partial L}{\partial w}\newline b:= b-\alpha\frac{\partial L}{\partial b} \newline  \text{\}}$$
+```math
+\text{Repeat N times \{} 
+```
+```math
+w := w-\alpha\frac{\partial L}{\partial w}
+```
+```math
+b:= b-\alpha\frac{\partial L}{\partial b}
+```
+```math
+\text{\}}
+```
 
 We perform N steps, and for each of those steps, we compute **dl_dw** and **dl_db**, which are partial derivatives with respect to **w** and **b**, for all of the training examples.
 
@@ -452,29 +474,36 @@ The next step is to compute the activation G, which for this example is the [sig
 
 $$ G(x) = \frac{1}{1 + e^{-x}} $$
 
-Finally, each neuron computes an activation value <sub>**Eq 1**</sub> $$ a_i = G(F(x)) $$
+Finally, each neuron computes an activation value <sub>**Eq 1**</sub> 
+```math
+a_i = G(F(x))
+```
 
   
   
 
 Because we have 3 neurons for this layer, the next layer will recieve the activation vector
 
-$$  \vec{a} = \begin{bmatrix} a_1 \\ a_2 \\ a_3  \end{bmatrix} $$
+```math
+\vec{a} = \begin{bmatrix} a_1 \\ a_2 \\ a_3  \end{bmatrix}
+```
 
   
   
 
 Following this logic, layer 2 will perform the same operations on **a**, instead of x, however this time taking the dot product, because **a** is a vector and so is **w**
 
-$$ F(a) = w ⋅a + b $$
+```math
+F(a) = w ⋅a + b
+```
 
-$$ c = G(F(a)) $$
+```math
+c = G(F(a))
+```
 
   
 
 Lets start defining the class
-
-  
 
 ```python
 
@@ -532,9 +561,13 @@ It is defined as:
 
   
 
-$$ softmax(x_i) = \frac{e^{x_{i}}}{\sum_{j=1}^K e^{x_{j}}} \ \ \ for\ i=1,2,\dots,K $$
+```math
+softmax(x_i) = \frac{e^{x_{i}}}{\sum_{j=1}^K e^{x_{j}}} \ \ \ for\ i=1,2,\dots,K 
+```
 and
-$$ softmax(x) = \begin{bmatrix} softmax(x_1) \\ \vdots \\ softmax(x_n) \end{bmatrix} $$
+```math
+softmax(x) = \begin{bmatrix} softmax(x_1) \\ \vdots \\ softmax(x_n) \end{bmatrix}
+```
 
   
   
@@ -557,7 +590,9 @@ $$W_L \sim  \mathcal{N}\left(\mu=0, \sigma=\sqrt{\frac{2}{i+o}}\right) $$
 
 And
 
-$$  \vec{b} = \begin{bmatrix} 0 \\ \vdots \\ 0  \end{bmatrix} $$
+```math
+\vec{b} = \begin{bmatrix} 0 \\ \vdots \\ 0  \end{bmatrix}
+```
 
 Where i is `input_size` and o is `output_size`
 
@@ -778,10 +813,9 @@ However, this is only for a single class, and as we know, our binary classificat
 
 We can further derive a loss function for the two distributions like so:
 
-$$ H_p(q) = -\frac{1}{N}\sum_{i=1}^Ny_ilog(p(y_i)) +(1-y_i)log(1-p(y_i))
-
-$$
-
+```math
+H_p(q) = -\frac{1}{N}\sum_{i=1}^Ny_ilog(p(y_i)) +(1-y_i)log(1-p(y_i))
+```
 Where **N** is the amount of training examples, used to average out the loss.
 
 The terms inside the sum are this way because when we have Yi=1, we only consider cross-entropy on class 'alive' and if we have Yi=0, we only consider it on the class 'dead'.
@@ -807,7 +841,9 @@ We have 2 layers, (that's excluding input), one hidden and an output layer with 
 
 Our input layer consists of 7 neurons because of the size of our data
 
-$$  \vec x = \begin{bmatrix} x_1\text{(Age)} \\ x_2\text{(Sex)} \\ \vdots \\ x_7\text{(embarked)}\end{bmatrix} $$
+```math
+\vec x = \begin{bmatrix} x_1\text{(Age)} \\ x_2\text{(Sex)} \\ \vdots \\ x_7\text{(embarked)}\end{bmatrix}
+```
 
 ![enter image description here](https://raw.githubusercontent.com/VIad/mlp-article-repo/main/images/6161YJv.jpg)
 
@@ -949,11 +985,15 @@ We iterate **backwards** from the final layer to the first one, computing and pr
 
   
 
-$$  \text{activation\_error} = \frac{\partial  \text{ error\_or\_w}}{\partial  \text{ layer\_activation}}\newline
-\newline
-\text{dense\_error\_w} = \frac{1}{m} \cdot\frac{\partial  \text{ layer\_activation}}{\partial  \text{ dense\_function\_w}} \newline
-\text{dense\_error\_b} = \frac{1}{m} \cdot\frac{\partial  \text{ layer\_activation}}{\partial  \text{ dense\_function\_b}} \newline
-$$
+```math
+\text{activation\_error} = \frac{\partial  \text{ error\_or\_w}}{\partial  \text{ layer\_activation}}
+```
+```math
+\text{dense\_error\_w} = \frac{1}{m} \cdot\frac{\partial  \text{ layer\_activation}}{\partial  \text{ dense\_function\_w}}
+```
+```math
+\text{dense\_error\_w} = \frac{1}{m} \cdot\frac{\partial  \text{ layer\_activation}}{\partial  \text{ dense\_function\_b}} 
+```
 
 Where **dense_function_w** and **dense_function_b** are the partial derivatives of the linear dense activation function of the layer, with respect to either w or b.
 
@@ -962,15 +1002,21 @@ Where **dense_function_w** and **dense_function_b** are the partial derivatives 
 
 Then we perform weight / bias updates like this
 
-$$ W_l:= W_l - \alpha  \cdot\text{dense\_error\_w} \newline
+```math
+W_l:= W_l - \alpha  \cdot\text{dense\_error\_w}
+```
 
-B_l:= B_l - \alpha\cdot\text{dense\_error\_b}$$
+```math
+B_l:= B_l - \alpha\cdot\text{dense\_error\_b}
+```
 
   
 
 And finally, we compute the error with respect to this error, which will be later input as **error_or_w for the previous layer. (remember, we're going backwards)**
 
-$$  \text{self\_error} = \text{activation\_error}\cdot W_l^T $$
+```math 
+\text{self\_error} = \text{activation\_error}\cdot W_l^T
+```
 
 Where Wl is this layer's weight.
 
@@ -978,7 +1024,6 @@ Where Wl is this layer's weight.
 
 The python implementation for the layer specific backprop:
 
-  
 
 **Layer Class**
 
@@ -1138,27 +1183,48 @@ We get a decent result, however improvements can be made :)
 
 The algorithm works by computing an exponential moving average and a squared moving average of the **w** and **b** gradients. Two hyperparameters are defined, **beta1** and **beta2**, which control the moving averages' exponential decay rates.
 
-$$ β1, β2 ∈ [0, 1) $$
+```math
+β1, β2 ∈ [0, 1)
+```
 
 The first moment moving averages are computed as:
-$$ mw_t ← β1 · mw_{t−1} + (1 − β1) · \partial w \newline
-mb_t ← β1 · mb_{t−1} + (1 − β1) · \partial b $$
 
+```math
+mw_t ← β1 · mw_{t−1} + (1 − β1) · \partial w
+```
+```math
+mb_t ← β1 · mb_{t−1} + (1 − β1) · \partial b
+```
 And the second moment:
-$$ vw_t ← β2 · vw_{t−1} + (1 − β2) · \partial w^2 \newline 
-vb_t ← β2 · vb_{t−1} + (1 − β2) · \partial b^2$$
+```math
+vw_t ← β2 · vw_{t−1} + (1 − β2) · \partial w^2
+```
+```math
+vb_t ← β2 · vb_{t−1} + (1 − β2) · \partial b^2
+```
+
 Since the moving averages are initialized as 0s (or vectors of 0s), the moving average will be biased towards 0.
 
 To counter that, the ADAM authors cleverly compute
 
-$$ \hat{mw}_t ← \frac{mw_t}{(1 − β_1^t )} \newline
-\hat{mb}_t ← \frac{mb_t}{(1 − β_1^t )} $$
+```math
+\hat{mw}_t ← \frac{mw_t}{(1 − β_1^t )}
+```
+```math
+\hat{mb}_t ← \frac{mb_t}{(1 − β_1^t )}
+```
 And for the second moment:
-$$ \hat{vw}_t ← \frac{vw_t}{(1 − β_2^t )} \newline
-\hat{vb}_t ← \frac{vb_t}{(1 − β_2^t )} $$
+```math
+\hat{vw}_t ← \frac{vw_t}{(1 − β_2^t )}
+```
+```math
+\hat{vb}_t ← \frac{vb_t}{(1 − β_2^t )}
+```
 
 The term in the denominator
-$$ (1 - β_{1,2}^t) $$
+```math
+(1 - β_{1,2}^t)
+```
 is of power t, because this is meant to solve the discrepancy between **all time steps up until this point**. 
 
 The python implementation is relatively straightforward:
